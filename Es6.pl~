@@ -1,0 +1,16 @@
+%%% -*- Mode: prolog -*-
+
+%%% Es6 - Palindrome
+
+%palindrome(L1):-
+%    reverse(L1, L1).
+
+palindrome([Y | Ys]):-
+    palindrome(Ys)
+    Y = last_element(Xs).
+
+last_element([X], [X]).
+
+last_element([_ | Xs] , Y) :-
+    last_element(Xs,  Y),
+    !.

@@ -1,0 +1,23 @@
+%%% -*- Mode: prolog -*-
+
+% pick/3
+% pick(List, Pos, Element)
+
+pick([X | _], 1, X) :- !.
+
+pick([_ | Xs], Pos, Y) :-
+    Pos > 1,
+    !,
+    Pos1 is Pos -1,
+    pick(Xs, Pos1, Y).
+
+pick(List, Pos, _) :-
+    \+ in_range(List, Pos),
+    !,
+    write("Index out of bound"),
+    fail.
+
+in_range(List, N) :-
+    length(List, X),
+    N > 0,
+    N < X + 1.

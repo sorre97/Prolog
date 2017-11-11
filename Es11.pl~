@@ -1,0 +1,15 @@
+%%% -*- Mode: prolog -*-
+
+% rimuovi/3
+% rimuovi(List, X, NewList)
+
+r([], _, []) :- !.
+
+r([X], X, []) :- !.
+
+r([X | Xs], X, Ris) :-
+	!,
+	r(Xs, X, Ris).
+r([X | Xs], N, [X | Ris]) :-
+	!,
+	r(Xs, N, Ris).
